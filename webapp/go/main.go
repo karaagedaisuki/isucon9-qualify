@@ -2120,7 +2120,7 @@ func postBump(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tx.Get(&targetItem, "SELECT * FROM `items` WHERE `id` = ?", itemID)
+	err = tx.Get(&targetItem, "SELECT id FROM `items` WHERE `id` = ?", itemID)
 	if err != nil {
 		log.Print(err)
 		outputErrorMsg(w, http.StatusInternalServerError, "db error")
